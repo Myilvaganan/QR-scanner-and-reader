@@ -1,6 +1,7 @@
 import React from "react";
 import QRGenerate from "../QRGenerate";
 import QRScanner from "./QRScanner";
+import QRReaderApp from "./QRReader";
 
 const QR = () => {
   const [showGenerateQR, setGenerateQR] = React.useState(false);
@@ -24,6 +25,7 @@ const QR = () => {
       </button>
       {showGenerateQR && <QRGenerate />}
       {showScanner && <QRScanner />}
+      <QRReaderApp />
     </div>
   );
 };
