@@ -4,7 +4,7 @@ import QR from "./components/QR";
 function App() {
   return (
     <div className="container">
-      <h1 className="text-center"> MYL Logistics </h1>
+      <h2 className="text-center m-4 text-dark">Tracking Status App</h2>
       <QR />
     </div>
   );

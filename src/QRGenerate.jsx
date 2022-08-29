@@ -26,7 +26,7 @@ const QRGenerate = () => {
 
   const createRow = (id, label, placeholder, eventHandler) => {
     return (
-      <div class="row mt-1">
+      <div class="row">
         <div class="col">
           <div class="mb-2">
             <label for={id} class="form-label">
@@ -57,7 +57,7 @@ const QRGenerate = () => {
       {createRow("tube", "Tube No.:", "Enter tube no.", setTube)}
       {createRow("location", "Location:", "Enter location", setLocation)}
       {container && vessel && tube && location && (
-        <React.Fragment>
+        <div className="col-12 justify-content-center align-items-center d-flex flex-column">
           <QRCode
             id="qr-gen"
             value={JSON.stringify({ container, vessel, tube, location })}
@@ -68,11 +68,10 @@ const QRGenerate = () => {
           <div className="row mt-5">
             <div className="col">
               <b className="m-3">
-                Click for{" "}
                 <button
                   type="button"
                   onClick={downloadQRCode}
-                  className={"btn btn-success"}
+                  className={"btn btn-warning"}
                   disabled={!container || !vessel || !tube || !location}
                 >
                   Download QR Code
@@ -80,9 +79,8 @@ const QRGenerate = () => {
               </b>
             </div>
           </div>
-        </React.Fragment>
-          )}
-          
+        </div>
+      )}
     </div>
   );
 };
