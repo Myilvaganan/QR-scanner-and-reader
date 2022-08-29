@@ -4,7 +4,7 @@ import QR from "./components/QR";
 function App() {
   return (
     <div className="container">
-      <h1 className="text-center"> QR Code and Download - Myilvaganan S </h1>
+      <h1 className="text-center"> MYL Logistics </h1>
       <QR />
     </div>
   );
