@@ -13,20 +13,9 @@ const QRScanner = (props) => {
     location: EMPTY,
   });
   const [showCamera, setShowCamera] = useState(true);
-  const [cameraConstraint,setCameraConstraint] = useState(CAMERA_CONSTRAINT_ENVIRONMENT);
-
-  const cameraConstraintHandler = (value) => {
-      setCameraConstraint(value)
-  }
 
   return (
     <div className="row">
-      <div className="col-12 my-3 d-flex justify-content-center align-items-center">
-        <CameraConstraints
-            cameraConstraintHandler={(event) => cameraConstraintHandler(event)}
-        />
-      </div>
-
       <div className="col-12 d-flex justify-content-center">
         {showCamera && (
           <QrReader
@@ -37,7 +26,7 @@ const QRScanner = (props) => {
               }
             }}
             containerStyle={{ width: "300px" }}
-            constraints ={{facingMode: cameraConstraint}}
+            constraints ={{facingMode: CAMERA_CONSTRAINT_ENVIRONMENT}}
           />
         )}
       </div>

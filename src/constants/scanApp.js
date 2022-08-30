@@ -6,9 +6,6 @@ const PLACE_HOLDER_TEXT = "Leave a comment here"
 const CAMERA_CONSTRAINT_ENVIRONMENT = "environment"
 const CAMERA_CONSTRAINT_USER= "user"
 
-
-
-
 export {
 	GENERATE,
 	SCANNER,
