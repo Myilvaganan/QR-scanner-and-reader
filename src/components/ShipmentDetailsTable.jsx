@@ -1,5 +1,5 @@
 import React from "react";
-import {PLACE_HOLDER_TEXT} from "../constants/scanApp";
+import { PLACE_HOLDER_TEXT } from "../constants/scanApp";
 
 const ShipmentDetailsTable = ({ container, vessel, tube, location }) => {
   return (

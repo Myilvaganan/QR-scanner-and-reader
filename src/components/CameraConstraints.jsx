@@ -1,7 +1,7 @@
 import React from "react";
-import {CAMERA_CONSTRAINT_ENVIRONMENT, CAMERA_CONSTRAINT_USER} from "../constants/scanApp";
+import { CAMERA_CONSTRAINT_ENVIRONMENT, CAMERA_CONSTRAINT_USER } from "../constants/scanApp";
 
-const CameraConstraints = ({cameraConstraintHandler}) => {
+const CameraConstraints = ({ cameraConstraintHandler }) => {
 	return (
 		<select
 			className="form-select w-50"

@@ -1,17 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import QRCode from "qrcode.react";
-import {EMPTY, QR_Parameters, QRGenerateConstants} from "../constants/scanApp";
-import {downloadQRCode} from "../utils/utilityMethods";
-import {SubmitResetButton} from "./ButtonComponent";
+import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
+import { downloadQRCode } from "../utils/utilityMethods";
+import { SubmitResetButton } from "./ButtonComponent";
 
 const QRGenerate = () => {
   const [container, setContainer] = useState(EMPTY);
   const [vessel, setVessel] = useState(EMPTY);
   const [tube, setTube] = useState(EMPTY);
   const [location, setLocation] = useState(EMPTY);
-  const [showQR,setShowQR] = useState(false);
+  const [showQR, setShowQR] = useState(false);
 
-  const createRow = (id, label, placeholder, value,eventHandler) => {
+  const createRow = (id, label, placeholder, value, eventHandler) => {
     return (
       <div className="row">
         <div className="col">
@@ -34,9 +34,9 @@ const QRGenerate = () => {
   };
 
   const onSubmitHandler = () => {
-    if(container && vessel && tube && location){
+    if (container && vessel && tube && location) {
       setShowQR(true)
-    }else{
+    } else {
       setShowQR(false)
     }
   }
@@ -54,13 +54,13 @@ const QRGenerate = () => {
       {createRow(QRGenerateConstants.CONTAINER_ID, QRGenerateConstants.CONTAINER_LABEL, QRGenerateConstants.CONTAINER_PLACEHOLDER, container, setContainer)}
       {createRow(QRGenerateConstants.VESSEL_ID, QRGenerateConstants.VESSEL_LABEL, QRGenerateConstants.VESSEL_PLACEHOLDER, vessel, setVessel)}
       {createRow(QRGenerateConstants.TUBE_ID, QRGenerateConstants.TUBE_LABEL, QRGenerateConstants.TUBE_PLACEHOLDER, tube, setTube)}
-      {createRow(QRGenerateConstants.LOCATION_ID, QRGenerateConstants.LOCATION_LABEL, QRGenerateConstants.LOCATION_PLACEHOLDER,location, setLocation)}
+      {createRow(QRGenerateConstants.LOCATION_ID, QRGenerateConstants.LOCATION_LABEL, QRGenerateConstants.LOCATION_PLACEHOLDER, location, setLocation)}
 
-     <SubmitResetButton
-         onSubmitHandler={() => onSubmitHandler()}
-         onResetHandler={() => onResetHandler()}
-         isDisabled={!container || !vessel || !tube || !location}
-     />
+      <SubmitResetButton
+        onSubmitHandler={() => onSubmitHandler()}
+        onResetHandler={() => onResetHandler()}
+        isDisabled={!container || !vessel || !tube || !location}
+      />
 
       {showQR && (
         <div className="col-12 my-3 justify-content-center align-items-center d-flex flex-column">
@@ -76,7 +76,7 @@ const QRGenerate = () => {
               <b className="m-1">
                 <button
                   type="button"
-                  onClick={() => downloadQRCode(container,vessel,tube,location)}
+                  onClick={() => downloadQRCode(container, vessel, tube, location)}
                   className={"btn btn-warning"}
                   disabled={!container || !vessel || !tube || !location}
                 >

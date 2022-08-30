@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import ButtonComponent from "./ButtonComponent";
-import {CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY} from "../constants/scanApp";
+import { CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY } from "../constants/scanApp";
 import ShipmentDetailsTable from "./ShipmentDetailsTable";
-import CameraConstraints from "./CameraConstraints";
 
 const QRScanner = (props) => {
   const [data, setData] = useState({
@@ -26,7 +25,7 @@ const QRScanner = (props) => {
               }
             }}
             containerStyle={{ width: "300px" }}
-            constraints ={{facingMode: CAMERA_CONSTRAINT_ENVIRONMENT}}
+            constraints={{ facingMode: CAMERA_CONSTRAINT_ENVIRONMENT }}
           />
         )}
       </div>
@@ -37,10 +36,10 @@ const QRScanner = (props) => {
           </h4>
           <div className="col-12 table-responsive">
             <ShipmentDetailsTable
-                container={data.container}
-                vessel={data.vessel}
-                tube={data.tube}
-                location={data.location}
+              container={data.container}
+              vessel={data.vessel}
+              tube={data.tube}
+              location={data.location}
             />
             <ButtonComponent />
           </div>

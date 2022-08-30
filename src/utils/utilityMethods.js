@@ -1,6 +1,4 @@
-
-
-export const downloadQRCode = (container,vessel,tube,location) => {
+export const downloadQRCode = (container, vessel, tube, location) => {
 	const canvas = document.getElementById("qr-gen");
 	const pngUrl = canvas
 		.toDataURL("image/png")
@@ -8,9 +6,8 @@ export const downloadQRCode = (container,vessel,tube,location) => {
 
 	let downloadLink = document.createElement("a");
 	downloadLink.href = pngUrl;
-	downloadLink.download = `${
-		container + "_" + vessel + "_" + tube + "_" + location
-	}.png`;
+	downloadLink.download = `${container + "_" + vessel + "_" + tube + "_" + location
+		}.png`;
 
 	document.body.appendChild(downloadLink);
 	downloadLink.click();
