@@ -65,16 +65,16 @@ const QRGenerate = () => {
             level={"H"}
             includeMargin={true}
           />
-          <div className="row mt-5">
+          <div className="row mt-1">
             <div className="col">
-              <b className="m-3">
+              <b className="m-1">
                 <button
                   type="button"
                   onClick={downloadQRCode}
                   className={"btn btn-warning"}
                   disabled={!container || !vessel || !tube || !location}
                 >
-                  Download QR Code
+                  <b>Download QR Code</b>
                 </button>
               </b>
             </div>
