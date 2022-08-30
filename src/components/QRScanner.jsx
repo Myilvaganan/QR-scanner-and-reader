@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import ButtonComponent from "./ButtonComponent";
-import {EMPTY} from "../constants/scanApp";
+import {CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY} from "../constants/scanApp";
 import ShipmentDetailsTable from "./ShipmentDetailsTable";
 import CameraConstraints from "./CameraConstraints";
 
@@ -13,7 +13,7 @@ const QRScanner = (props) => {
     location: EMPTY,
   });
   const [showCamera, setShowCamera] = useState(true);
-  const [cameraConstraint,setCameraConstraint] = useState("environment");
+  const [cameraConstraint,setCameraConstraint] = useState(CAMERA_CONSTRAINT_ENVIRONMENT);
 
   const cameraConstraintHandler = (value) => {
       setCameraConstraint(value)
@@ -26,6 +26,7 @@ const QRScanner = (props) => {
             cameraConstraintHandler={(event) => cameraConstraintHandler(event)}
         />
       </div>
+
       <div className="col-12 d-flex justify-content-center">
         {showCamera && (
           <QrReader
@@ -36,7 +37,7 @@ const QRScanner = (props) => {
               }
             }}
             containerStyle={{ width: "300px" }}
-            constraint ={{facingMode: cameraConstraint}}
+            constraints ={{facingMode: cameraConstraint}}
           />
         )}
       </div>
