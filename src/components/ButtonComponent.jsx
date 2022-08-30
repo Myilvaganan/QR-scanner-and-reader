@@ -34,16 +34,38 @@ export const GenerateScanButtonComponent = ({handler}) => {
     return (
         <div className="col-12 d-flex justify-content-center align-items-center">
             <button
-                className="btn btn-primary me-2 btn-lg"
+                className="btn btn-primary me-2 btn-sm p-2"
                 onClick={() => handler(GENERATE)}
             >
-                {GENERATE_TEXT}
+               <b> {GENERATE_TEXT}</b>
             </button>
             <button
-                className="btn btn-secondary btn-lg"
+                className="btn btn-secondary btn-sm p-2"
                 onClick={() => handler(SCANNER)}
             >
-                {SCAN_TEXT}
+                <b>  {SCAN_TEXT}</b>
+            </button>
+        </div>
+    )
+}
+
+
+export const SubmitResetButton = ({onResetHandler, onSubmitHandler, isDisabled}) => {
+    return (
+        <div className="col-12 my-2 justify-content-center align-items-center d-flex">
+            <button
+                className={"btn btn-outline-danger me-2"}
+                onClick={() => onResetHandler()}
+            >
+                <b>Reset</b>
+            </button>
+            <button
+                className={"btn btn-success"}
+                onClick={() => onSubmitHandler()}
+                disabled={isDisabled}
+
+            >
+                <b>Generate</b>
             </button>
         </div>
     )
