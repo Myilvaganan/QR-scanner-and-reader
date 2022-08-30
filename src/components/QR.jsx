@@ -1,5 +1,5 @@
 import React from "react";
-import QRGenerate from "../QRGenerate";
+import QRGenerate from "./QRGenerate";
 import QRScanner from "./QRScanner";
 import {GenerateScanButtonComponent} from "./ButtonComponent";
 

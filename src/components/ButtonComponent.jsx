@@ -1,5 +1,13 @@
 import React from 'react'
-import {GENERATE, HOME_PATH, SCANNER} from "../constants/scanApp";
+import {
+    GENERATE,
+    GENERATE_TEXT,
+    HOME_PATH,
+    NEXT_BTN_TEXT,
+    PREVIOUS_BTN_TEXT,
+    SCAN_TEXT,
+    SCANNER
+} from "../constants/scanApp";
 
 let ButtonComponent;
 // eslint-disable-next-line no-unused-vars
@@ -10,13 +18,13 @@ export default ButtonComponent = () => {
         className="btn btn-warning mx-2"
         onClick={() => (window.location.href = HOME_PATH)}
       >
-        Previous
+          {PREVIOUS_BTN_TEXT}
       </button>
       <button
         className="btn btn-success"
         onClick={() => (window.location.href = HOME_PATH)}
       >
-        Next
+          {NEXT_BTN_TEXT}
       </button>
     </div>
   );
@@ -29,13 +37,13 @@ export const GenerateScanButtonComponent = ({handler}) => {
                 className="btn btn-primary me-2 btn-lg"
                 onClick={() => handler(GENERATE)}
             >
-                Generate QR
+                {GENERATE_TEXT}
             </button>
             <button
                 className="btn btn-secondary btn-lg"
                 onClick={() => handler(SCANNER)}
             >
-                Scan QR
+                {SCAN_TEXT}
             </button>
         </div>
     )
