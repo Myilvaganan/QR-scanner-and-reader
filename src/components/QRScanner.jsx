@@ -1,17 +1,31 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
+import ButtonComponent from "./ButtonComponent";
+import {EMPTY} from "../constants/scanApp";
+import ShipmentDetailsTable from "./ShipmentDetailsTable";
+import CameraConstraints from "./CameraConstraints";
 
 const QRScanner = (props) => {
   const [data, setData] = useState({
-    container: "",
-    tube: "",
-    vessel: "",
-    location: "",
+    container: EMPTY,
+    tube: EMPTY,
+    vessel: EMPTY,
+    location: EMPTY,
   });
   const [showCamera, setShowCamera] = useState(true);
+  const [cameraConstraint,setCameraConstraint] = useState("environment");
+
+  const cameraConstraintHandler = (value) => {
+      setCameraConstraint(value)
+  }
 
   return (
     <div className="row">
+      <div className="col-12 my-3 d-flex justify-content-center align-items-center">
+        <CameraConstraints
+            cameraConstraintHandler={(event) => cameraConstraintHandler(event)}
+        />
+      </div>
       <div className="col-12 d-flex justify-content-center">
         {showCamera && (
           <QrReader
@@ -22,6 +36,7 @@ const QRScanner = (props) => {
               }
             }}
             containerStyle={{ width: "300px" }}
+            constraint ={{facingMode: cameraConstraint}}
           />
         )}
       </div>
@@ -31,68 +46,13 @@ const QRScanner = (props) => {
             Shipment Details
           </h4>
           <div className="col-12 table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Particulars</th>
-                  <th scope="col">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Container</td>
-                  <td>{data?.container}</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Vessel No.</td>
-                  <td> {data?.vessel}</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Tube No.</td>
-                  <td>{data?.tube}</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Location</td>
-                  <td>{data?.location}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>Comments</b>
-                  </td>
-                  <td colspan="2">
-                    <textarea
-                      className="form-control mb-4"
-                      placeholder="Leave a comment here"
-                      id="floatingTextarea"
-                    ></textarea>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="d-flex justify-content-end align-items-end my-3 w-100">
-              <button
-                className="btn btn-warning mx-2"
-                onClick={() =>
-                  (window.location.href = "../QR-scanner-and-reader")
-                }
-              >
-                Previous
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={() =>
-                  (window.location.href = "../QR-scanner-and-reader")
-                }
-              >
-                {" "}
-                Next
-              </button>
-            </div>
+            <ShipmentDetailsTable
+                container={data.container}
+                vessel={data.vessel}
+                tube={data.tube}
+                location={data.location}
+            />
+            <ButtonComponent />
           </div>
         </div>
       )}

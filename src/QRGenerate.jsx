@@ -26,15 +26,15 @@ const QRGenerate = () => {
 
   const createRow = (id, label, placeholder, eventHandler) => {
     return (
-      <div class="row">
-        <div class="col">
-          <div class="mb-2">
-            <label for={id} class="form-label">
+      <div className="row">
+        <div className="col">
+          <div className="mb-2">
+            <label form={id} className="form-label">
               {label}
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id={id}
               onChange={(event) => eventHandler(event.target.value)}
               placeholder={placeholder}

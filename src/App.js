@@ -1,4 +1,3 @@
-import "./App.css";
 import QR from "./components/QR";
 
 function App() {
