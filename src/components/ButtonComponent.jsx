@@ -34,13 +34,13 @@ export const GenerateScanButtonComponent = ({ handler }) => {
     return (
         <div className="col-12 d-flex justify-content-center align-items-center">
             <button
-                className="btn btn-primary me-2 btn-sm p-2"
+                className="btn btn-warning me-2 btn-sm p-2"
                 onClick={() => handler(GENERATE)}
             >
                 <b> {GENERATE_TEXT}</b>
             </button>
             <button
-                className="btn btn-secondary btn-sm p-2"
+                className="btn btn-dark btn-sm p-2"
                 onClick={() => handler(SCANNER)}
             >
                 <b>  {SCAN_TEXT}</b>

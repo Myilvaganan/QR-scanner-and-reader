@@ -13,16 +13,28 @@ const NEXT_BTN_TEXT = "Next"
 const QRGenerateConstants = {
 	CONTAINER_ID: "container",
 	CONTAINER_LABEL: "Container Name",
-	CONTAINER_PLACEHOLDER: "For Eg., ASP_WING_C",
+	CONTAINER_PLACEHOLDER: "Enter Container Name",
 	VESSEL_ID: "vessel",
-	VESSEL_LABEL: "Vessel No.",
-	VESSEL_PLACEHOLDER: "For Eg., 123AFGHJ234",
+	VESSEL_LABEL: "Vessel Number",
+	VESSEL_PLACEHOLDER: "Enter Vessel Number",
 	TUBE_ID: "tube",
-	TUBE_LABEL: "Tube No.",
-	TUBE_PLACEHOLDER: "For Eg., 34567FGHJ",
+	TUBE_LABEL: "Tube Number",
+	TUBE_PLACEHOLDER: "Enter Tube Number",
 	LOCATION_ID: "location",
 	LOCATION_LABEL: "Location",
-	LOCATION_PLACEHOLDER: "Chennai, TamilNadu"
+	LOCATION_PLACEHOLDER: "Enter Shipped Location",
+	DOCUMENT_ID: "document",
+	DOCUMENT_LABEL: "Document Number",
+	DOCUMENT_PLACEHOLDER: "Enter Document Number",
+	ORDER_ID: "order",
+	ORDER_LABEL: "Order Number",
+	ORDER_PLACEHOLDER: "Enter Order Number",
+	TRACK_AND_TRACE_NUMBER_ID: "track_and_trace",
+	TRACK_AND_TRACE_NUMBER_LABEL: "Track & Trace Number",
+	TRACK_AND_TRACE_NUMBER_PLACEHOLDER: "Enter Track and Trace Number",
+	SHIPMENT_NUMBER: "shipment",
+	SHIPMENT_NUMBER_LABEL: "Shipment Number",
+	SHIPMENT_NUMBER_PLACEHOLDER: "Enter Shipment Number"
 }
 
 const QR_Parameters = {
@@ -30,8 +42,9 @@ const QR_Parameters = {
 	size: 290,
 	level: "L",
 	includeMargin: true
-
 }
+
+const QR_SCANNER_WIDTH = "300px";
 
 export {
 	GENERATE,
@@ -46,5 +59,6 @@ export {
 	PREVIOUS_BTN_TEXT,
 	NEXT_BTN_TEXT,
 	QRGenerateConstants,
-	QR_Parameters
+	QR_Parameters,
+	QR_SCANNER_WIDTH
 }

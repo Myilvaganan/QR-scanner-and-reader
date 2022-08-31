@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import ButtonComponent from "./ButtonComponent";
-import { CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY } from "../constants/scanApp";
+import { CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY, QR_SCANNER_WIDTH } from "../constants/scanApp";
 import ShipmentDetailsTable from "./ShipmentDetailsTable";
 
 const QRScanner = (props) => {
@@ -10,12 +10,16 @@ const QRScanner = (props) => {
     tube: EMPTY,
     vessel: EMPTY,
     location: EMPTY,
+    documentNumber: EMPTY,
+    orderNumber: EMPTY,
+    trackDetail: EMPTY,
+    shipmentNumber: EMPTY
   });
   const [showCamera, setShowCamera] = useState(true);
 
   return (
     <div className="row">
-      <div className="col-12 d-flex justify-content-center">
+      <div className="col-12 d-flex justify-content-center mt-4">
         {showCamera && (
           <QrReader
             onResult={(result) => {
@@ -24,7 +28,7 @@ const QRScanner = (props) => {
                 setShowCamera(false);
               }
             }}
-            containerStyle={{ width: "300px" }}
+            containerStyle={{ width: QR_SCANNER_WIDTH }}
             constraints={{ facingMode: CAMERA_CONSTRAINT_ENVIRONMENT }}
           />
         )}
@@ -40,6 +44,10 @@ const QRScanner = (props) => {
               vessel={data.vessel}
               tube={data.tube}
               location={data.location}
+              documentNumber ={data.documentNumber}
+              orderNumber ={data.orderNumber}
+              trackDetail ={data.trackDetail}
+              shipmentNumber={data.shipmentNumber}
             />
             <ButtonComponent />
           </div>
