@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import QRCode from "qrcode.react";
 import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
 import { downloadQRCode } from "../utils/utilityMethods";
@@ -65,6 +65,7 @@ const QRGenerate = () => {
 
     if (isPartialReset) {
       setValue({
+        ...value,
         [QRGenerateConstants.FIELD_9_ID]: EMPTY,
         [QRGenerateConstants.FIELD_10_ID]: EMPTY,
         [QRGenerateConstants.FIELD_11_ID]: EMPTY,
@@ -114,7 +115,7 @@ const QRGenerate = () => {
       <div className="accordion accordion-flush my-2" id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" onClick={() => onResetHandler(true)}>
               Additioal Fields
             </button>
           </h2>
