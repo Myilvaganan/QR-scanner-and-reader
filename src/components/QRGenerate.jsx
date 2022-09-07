@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState} from "react";
 import QRCode from "qrcode.react";
 import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
 import { downloadQRCode } from "../utils/utilityMethods";
