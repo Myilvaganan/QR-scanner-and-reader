@@ -3,19 +3,29 @@ import QRCode from "qrcode.react";
 import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
 import { downloadQRCode } from "../utils/utilityMethods";
 import { SubmitResetButton } from "./ButtonComponent";
+import uuid from 'react-uuid';
 
 const QRGenerate = () => {
-  const [container, setContainer] = useState(EMPTY);
-  const [vessel, setVessel] = useState(EMPTY);
-  const [tube, setTube] = useState(EMPTY);
-  const [location, setLocation] = useState(EMPTY);
-  const [documentNumber, setDocumentNumber] = useState(EMPTY);
-  const [orderNumber, setOrderNumber] = useState(EMPTY);
-  const [trackDetail, setTrackDetail] = useState(EMPTY);
-  const [shipmentNumber, setShipmentNumber] = useState(EMPTY);
+  const [value, setValue] = useState({
+    [QRGenerateConstants.FIELD_1_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_2_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_3_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_4_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_5_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_6_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_7_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_8_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_9_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_10_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_11_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_12_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_13_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_14_ID]: EMPTY
+  })
+
   const [showQR, setShowQR] = useState(false);
 
-  const createRow = (id, label, placeholder, value, eventHandler) => {
+  const createRow = (id, label, text, eventHandler) => {
     return (
       <div className="row">
         <div className="col">
@@ -27,9 +37,8 @@ const QRGenerate = () => {
               type="text"
               className="form-control"
               id={id}
-              value={value}
-              onChange={(event) => eventHandler(event.target.value)}
-              placeholder={placeholder}
+              value={text}
+              onChange={(event) => eventHandler({ ...value, [id]: event.target.value })}
             />
           </div>
         </div>
@@ -38,14 +47,15 @@ const QRGenerate = () => {
   };
 
   const onSubmitHandler = () => {
-    if (container &&
-      vessel &&
-      tube &&
-      location &&
-      documentNumber &&
-      orderNumber &&
-      trackDetail &&
-      shipmentNumber) {
+    if (value[QRGenerateConstants.FIELD_1_ID] &&
+      value[QRGenerateConstants.FIELD_2_ID] &&
+      value[QRGenerateConstants.FIELD_6_ID] &&
+      value[QRGenerateConstants.FIELD_3_ID] &&
+      value[QRGenerateConstants.FIELD_7_ID] &&
+      value[QRGenerateConstants.FIELD_4_ID] &&
+      value[QRGenerateConstants.FIELD_8_ID] &&
+      value[QRGenerateConstants.FIELD_5_ID]
+    ) {
       setShowQR(true)
     } else {
       setShowQR(false)
@@ -54,30 +64,67 @@ const QRGenerate = () => {
 
   const onResetHandler = () => {
     setShowQR(false)
-    setContainer(EMPTY)
-    setLocation(EMPTY)
-    setTube(EMPTY)
-    setVessel(EMPTY)
-    setDocumentNumber(EMPTY)
-    setOrderNumber(EMPTY)
-    setTrackDetail(EMPTY)
-    setShipmentNumber(EMPTY)
-  }
-  
-  const diableButtonOnEmptyString = () => {
-    return !container || !vessel || !tube || !location || !documentNumber || !orderNumber || !trackDetail || !shipmentNumber
+    setValue({
+      [QRGenerateConstants.FIELD_1_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_2_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_3_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_4_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_5_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_6_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_7_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_8_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_9_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_10_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_11_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_12_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_13_ID]: EMPTY,
+      [QRGenerateConstants.FIELD_14_ID]: EMPTY
+    })
   }
 
+  const diableButtonOnEmptyString = () => {
+    return !value[QRGenerateConstants.FIELD_1_ID] ||
+      !value[QRGenerateConstants.FIELD_2_ID] ||
+      !value[QRGenerateConstants.FIELD_6_ID] ||
+      !value[QRGenerateConstants.FIELD_3_ID] ||
+      !value[QRGenerateConstants.FIELD_7_ID] ||
+      !value[QRGenerateConstants.FIELD_4_ID] ||
+      !value[QRGenerateConstants.FIELD_8_ID] ||
+      !value[QRGenerateConstants.FIELD_5_ID]
+  }
+
+  console.log(value.field_1)
   return (
     <div className="main-container mt-3">
-      {createRow(QRGenerateConstants.DOCUMENT_ID, QRGenerateConstants.DOCUMENT_LABEL, QRGenerateConstants.DOCUMENT_PLACEHOLDER, documentNumber, setDocumentNumber)}
-      {createRow(QRGenerateConstants.ORDER_ID, QRGenerateConstants.ORDER_LABEL, QRGenerateConstants.ORDER_PLACEHOLDER, orderNumber, setOrderNumber)}
-      {createRow(QRGenerateConstants.TRACK_AND_TRACE_NUMBER_ID, QRGenerateConstants.TRACK_AND_TRACE_NUMBER_LABEL, QRGenerateConstants.TRACK_AND_TRACE_NUMBER_PLACEHOLDER, trackDetail, setTrackDetail)}
-      {createRow(QRGenerateConstants.SHIPMENT_NUMBER, QRGenerateConstants.SHIPMENT_NUMBER_LABEL, QRGenerateConstants.SHIPMENT_NUMBER_PLACEHOLDER, shipmentNumber, setShipmentNumber)}
-      {createRow(QRGenerateConstants.CONTAINER_ID, QRGenerateConstants.CONTAINER_LABEL, QRGenerateConstants.CONTAINER_PLACEHOLDER, container, setContainer)}
-      {createRow(QRGenerateConstants.VESSEL_ID, QRGenerateConstants.VESSEL_LABEL, QRGenerateConstants.VESSEL_PLACEHOLDER, vessel, setVessel)}
-      {createRow(QRGenerateConstants.TUBE_ID, QRGenerateConstants.TUBE_LABEL, QRGenerateConstants.TUBE_PLACEHOLDER, tube, setTube)}
-      {createRow(QRGenerateConstants.LOCATION_ID, QRGenerateConstants.LOCATION_LABEL, QRGenerateConstants.LOCATION_PLACEHOLDER, location, setLocation)}
+      {createRow(QRGenerateConstants.FIELD_1_ID, QRGenerateConstants.FIELD_1_LABEL, value[QRGenerateConstants.FIELD_1_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_2_ID, QRGenerateConstants.FIELD_2_LABEL, value[QRGenerateConstants.FIELD_2_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_3_ID, QRGenerateConstants.FIELD_3_LABEL, value[QRGenerateConstants.FIELD_3_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_4_ID, QRGenerateConstants.FIELD_4_LABEL, value[QRGenerateConstants.FIELD_4_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_5_ID, QRGenerateConstants.FIELD_5_LABEL, value[QRGenerateConstants.FIELD_5_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_6_ID, QRGenerateConstants.FIELD_6_LABEL, value[QRGenerateConstants.FIELD_6_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_7_ID, QRGenerateConstants.FIELD_7_LABEL, value[QRGenerateConstants.FIELD_7_ID], setValue)}
+      {createRow(QRGenerateConstants.FIELD_8_ID, QRGenerateConstants.FIELD_8_LABEL, value[QRGenerateConstants.FIELD_8_ID], setValue)}
+
+      <div className="accordion accordion-flush my-2" id="accordionFlushExample" onChange={() => console.log("fghj")}>
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="flush-headingOne">
+            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Additioal Fields
+            </button>
+          </h2>
+          <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div className="accordion-body">
+              {createRow(QRGenerateConstants.FIELD_9_ID, QRGenerateConstants.FIELD_9_LABEL,  value[QRGenerateConstants.FIELD_9_ID],  setValue)}
+              {createRow(QRGenerateConstants.FIELD_10_ID, QRGenerateConstants.FIELD_10_LABEL, value[QRGenerateConstants.FIELD_10_ID], setValue)}
+              {createRow(QRGenerateConstants.FIELD_11_ID, QRGenerateConstants.FIELD_11_LABEL, value[QRGenerateConstants.FIELD_11_ID], setValue)}
+              {createRow(QRGenerateConstants.FIELD_12_ID, QRGenerateConstants.FIELD_12_LABEL, value[QRGenerateConstants.FIELD_12_ID], setValue)}
+              {createRow(QRGenerateConstants.FIELD_13_ID, QRGenerateConstants.FIELD_13_LABEL, value[QRGenerateConstants.FIELD_13_ID], setValue)}
+              {createRow(QRGenerateConstants.FIELD_14_ID, QRGenerateConstants.FIELD_14_LABEL, value[QRGenerateConstants.FIELD_14_ID], setValue)}
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <SubmitResetButton
         onSubmitHandler={() => onSubmitHandler()}
@@ -90,14 +137,22 @@ const QRGenerate = () => {
           <QRCode
             id={QR_Parameters.id}
             value={JSON.stringify({
-              documentNumber,
-              orderNumber,
-              trackDetail,
-              shipmentNumber,
-              container,
-              vessel,
-              tube,
-              location
+              [QRGenerateConstants.UNIQUE_ID]: uuid(),
+              [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
+              [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
+              [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
+              [QRGenerateConstants.FIELD_4_ID]: value[QRGenerateConstants.FIELD_4_ID],
+              [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
+              [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
+              [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
+              [QRGenerateConstants.FIELD_8_ID]: value[QRGenerateConstants.FIELD_8_ID],
+              [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
+              [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
+              [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
+              [QRGenerateConstants.FIELD_12_ID]: value[QRGenerateConstants.FIELD_12_ID],
+              [QRGenerateConstants.FIELD_13_ID]: value[QRGenerateConstants.FIELD_13_ID],
+              [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
+
             })}
             size={QR_Parameters.size}
             level={QR_Parameters.level}
@@ -108,7 +163,7 @@ const QRGenerate = () => {
               <b className="m-1">
                 <button
                   type="button"
-                  onClick={() => downloadQRCode(container, vessel, tube, location)}
+                  onClick={() => downloadQRCode(value.field_1, value.field_2, value.field_3, value.field_4)}
                   className={"btn btn-warning"}
                   disabled={diableButtonOnEmptyString()}
                 >

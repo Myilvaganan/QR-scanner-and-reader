@@ -52,7 +52,7 @@ export const GenerateScanButtonComponent = ({ handler }) => {
 
 export const SubmitResetButton = ({ onResetHandler, onSubmitHandler, isDisabled }) => {
     return (
-        <div className="col-12 my-2 justify-content-center align-items-center d-flex">
+        <div className="col-12 my-3 justify-content-center align-items-center d-flex">
             <button
                 className={"btn btn-outline-danger me-2"}
                 onClick={() => onResetHandler()}

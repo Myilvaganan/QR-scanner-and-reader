@@ -3,17 +3,24 @@ import { QrReader } from "react-qr-reader";
 import ButtonComponent from "./ButtonComponent";
 import { CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY, QR_SCANNER_WIDTH } from "../constants/scanApp";
 import ShipmentDetailsTable from "./ShipmentDetailsTable";
+import { QRGenerateConstants } from "../constants/scanApp"
 
 const QRScanner = (props) => {
   const [data, setData] = useState({
-    container: EMPTY,
-    tube: EMPTY,
-    vessel: EMPTY,
-    location: EMPTY,
-    documentNumber: EMPTY,
-    orderNumber: EMPTY,
-    trackDetail: EMPTY,
-    shipmentNumber: EMPTY
+    [QRGenerateConstants.FIELD_1_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_2_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_3_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_4_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_5_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_6_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_7_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_8_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_9_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_10_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_11_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_12_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_13_ID]: EMPTY,
+    [QRGenerateConstants.FIELD_14_ID]: EMPTY
   });
   const [showCamera, setShowCamera] = useState(true);
 
@@ -39,16 +46,7 @@ const QRScanner = (props) => {
             Shipment Details
           </h4>
           <div className="col-12 table-responsive">
-            <ShipmentDetailsTable
-              container={data.container}
-              vessel={data.vessel}
-              tube={data.tube}
-              location={data.location}
-              documentNumber ={data.documentNumber}
-              orderNumber ={data.orderNumber}
-              trackDetail ={data.trackDetail}
-              shipmentNumber={data.shipmentNumber}
-            />
+            <ShipmentDetailsTable scannedData={data}/>
             <ButtonComponent />
           </div>
         </div>
