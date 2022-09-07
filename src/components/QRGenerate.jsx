@@ -14,7 +14,6 @@ const QRGenerate = () => {
     [QRGenerateConstants.FIELD_5_ID]: EMPTY,
     [QRGenerateConstants.FIELD_6_ID]: EMPTY,
     [QRGenerateConstants.FIELD_7_ID]: EMPTY,
-    [QRGenerateConstants.FIELD_8_ID]: EMPTY,
     [QRGenerateConstants.FIELD_9_ID]: EMPTY,
     [QRGenerateConstants.FIELD_10_ID]: EMPTY,
     [QRGenerateConstants.FIELD_11_ID]: EMPTY,
@@ -53,7 +52,6 @@ const QRGenerate = () => {
       value[QRGenerateConstants.FIELD_3_ID] &&
       value[QRGenerateConstants.FIELD_7_ID] &&
       value[QRGenerateConstants.FIELD_4_ID] &&
-      value[QRGenerateConstants.FIELD_8_ID] &&
       value[QRGenerateConstants.FIELD_5_ID]
     ) {
       setShowQR(true)
@@ -72,7 +70,6 @@ const QRGenerate = () => {
       [QRGenerateConstants.FIELD_5_ID]: EMPTY,
       [QRGenerateConstants.FIELD_6_ID]: EMPTY,
       [QRGenerateConstants.FIELD_7_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_8_ID]: EMPTY,
       [QRGenerateConstants.FIELD_9_ID]: EMPTY,
       [QRGenerateConstants.FIELD_10_ID]: EMPTY,
       [QRGenerateConstants.FIELD_11_ID]: EMPTY,
@@ -89,7 +86,6 @@ const QRGenerate = () => {
       !value[QRGenerateConstants.FIELD_3_ID] ||
       !value[QRGenerateConstants.FIELD_7_ID] ||
       !value[QRGenerateConstants.FIELD_4_ID] ||
-      !value[QRGenerateConstants.FIELD_8_ID] ||
       !value[QRGenerateConstants.FIELD_5_ID]
   }
 
@@ -103,7 +99,6 @@ const QRGenerate = () => {
       {createRow(QRGenerateConstants.FIELD_5_ID, QRGenerateConstants.FIELD_5_LABEL, value[QRGenerateConstants.FIELD_5_ID], setValue)}
       {createRow(QRGenerateConstants.FIELD_6_ID, QRGenerateConstants.FIELD_6_LABEL, value[QRGenerateConstants.FIELD_6_ID], setValue)}
       {createRow(QRGenerateConstants.FIELD_7_ID, QRGenerateConstants.FIELD_7_LABEL, value[QRGenerateConstants.FIELD_7_ID], setValue)}
-      {createRow(QRGenerateConstants.FIELD_8_ID, QRGenerateConstants.FIELD_8_LABEL, value[QRGenerateConstants.FIELD_8_ID], setValue)}
 
       <div className="accordion accordion-flush my-2" id="accordionFlushExample" onChange={() => console.log("fghj")}>
         <div className="accordion-item">
@@ -145,7 +140,6 @@ const QRGenerate = () => {
               [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
               [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
               [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
-              [QRGenerateConstants.FIELD_8_ID]: value[QRGenerateConstants.FIELD_8_ID],
               [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
               [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
               [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
