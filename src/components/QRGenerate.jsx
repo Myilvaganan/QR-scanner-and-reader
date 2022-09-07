@@ -60,23 +60,35 @@ const QRGenerate = () => {
     }
   }
 
-  const onResetHandler = () => {
+  const onResetHandler = (isPartialReset) => {
     setShowQR(false)
-    setValue({
-      [QRGenerateConstants.FIELD_1_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_2_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_3_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_4_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_5_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_6_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_7_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_9_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_10_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_11_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_12_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_13_ID]: EMPTY,
-      [QRGenerateConstants.FIELD_14_ID]: EMPTY
-    })
+
+    if (isPartialReset) {
+      setValue({
+        [QRGenerateConstants.FIELD_9_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_10_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_11_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_12_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_13_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_14_ID]: EMPTY
+      })
+    } else {
+      setValue({
+        [QRGenerateConstants.FIELD_1_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_2_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_3_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_4_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_5_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_6_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_7_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_9_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_10_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_11_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_12_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_13_ID]: EMPTY,
+        [QRGenerateConstants.FIELD_14_ID]: EMPTY
+      })
+    }
   }
 
   const diableButtonOnEmptyString = () => {
@@ -89,7 +101,6 @@ const QRGenerate = () => {
       !value[QRGenerateConstants.FIELD_5_ID]
   }
 
-  console.log(value.field_1)
   return (
     <div className="main-container mt-3">
       {createRow(QRGenerateConstants.FIELD_1_ID, QRGenerateConstants.FIELD_1_LABEL, value[QRGenerateConstants.FIELD_1_ID], setValue)}
@@ -100,7 +111,7 @@ const QRGenerate = () => {
       {createRow(QRGenerateConstants.FIELD_6_ID, QRGenerateConstants.FIELD_6_LABEL, value[QRGenerateConstants.FIELD_6_ID], setValue)}
       {createRow(QRGenerateConstants.FIELD_7_ID, QRGenerateConstants.FIELD_7_LABEL, value[QRGenerateConstants.FIELD_7_ID], setValue)}
 
-      <div className="accordion accordion-flush my-2" id="accordionFlushExample" onChange={() => console.log("fghj")}>
+      <div className="accordion accordion-flush my-2" id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -109,7 +120,7 @@ const QRGenerate = () => {
           </h2>
           <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div className="accordion-body">
-              {createRow(QRGenerateConstants.FIELD_9_ID, QRGenerateConstants.FIELD_9_LABEL,  value[QRGenerateConstants.FIELD_9_ID],  setValue)}
+              {createRow(QRGenerateConstants.FIELD_9_ID, QRGenerateConstants.FIELD_9_LABEL, value[QRGenerateConstants.FIELD_9_ID], setValue)}
               {createRow(QRGenerateConstants.FIELD_10_ID, QRGenerateConstants.FIELD_10_LABEL, value[QRGenerateConstants.FIELD_10_ID], setValue)}
               {createRow(QRGenerateConstants.FIELD_11_ID, QRGenerateConstants.FIELD_11_LABEL, value[QRGenerateConstants.FIELD_11_ID], setValue)}
               {createRow(QRGenerateConstants.FIELD_12_ID, QRGenerateConstants.FIELD_12_LABEL, value[QRGenerateConstants.FIELD_12_ID], setValue)}
@@ -123,7 +134,7 @@ const QRGenerate = () => {
 
       <SubmitResetButton
         onSubmitHandler={() => onSubmitHandler()}
-        onResetHandler={() => onResetHandler()}
+        onResetHandler={() => onResetHandler(false)}
         isDisabled={diableButtonOnEmptyString()}
       />
 

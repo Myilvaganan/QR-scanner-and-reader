@@ -5,7 +5,7 @@ const ShipmentDetailsTable = (props) => {
 
   const generateRows = (values) => {
     return Object.keys(values).map((key, i) => {
-      return (
+      return values[key] &&  (
         <tr key={i}>
           <th scope="row">{i + 1}</th>
           <td>{QRGenerateConstants[key.replace("ID","LABEL")]}</td>
