@@ -8,6 +8,7 @@ import {
     SCAN_TEXT,
     SCANNER
 } from "../constants/scanApp";
+import Button from '@mui/material/Button';
 
 let ButtonComponent;
 // eslint-disable-next-line no-unused-vars
@@ -33,18 +34,8 @@ export default ButtonComponent = () => {
 export const GenerateScanButtonComponent = ({ handler }) => {
     return (
         <div className="col-12 d-flex justify-content-center align-items-center">
-            <button
-                className="btn btn-warning me-2 btn-sm p-2"
-                onClick={() => handler(GENERATE)}
-            >
-                <b> {GENERATE_TEXT}</b>
-            </button>
-            <button
-                className="btn btn-dark btn-sm p-2"
-                onClick={() => handler(SCANNER)}
-            >
-                <b>  {SCAN_TEXT}</b>
-            </button>
+            <Button className="me-2" size="medium" variant="contained" onClick={() => handler(GENERATE)}><b> {GENERATE_TEXT}</b></Button>
+            <Button size="medium" variant="outlined" color="secondary" onClick={() => handler(SCANNER)}> <b>  {SCAN_TEXT}</b></Button>
         </div>
     )
 }
@@ -53,20 +44,8 @@ export const GenerateScanButtonComponent = ({ handler }) => {
 export const SubmitResetButton = ({ onResetHandler, onSubmitHandler, isDisabled }) => {
     return (
         <div className="col-12 my-3 justify-content-center align-items-center d-flex">
-            <button
-                className={"btn btn-outline-danger me-2"}
-                onClick={() => onResetHandler()}
-            >
-                <b>Reset</b>
-            </button>
-            <button
-                className={"btn btn-success"}
-                onClick={() => onSubmitHandler()}
-                disabled={isDisabled}
-
-            >
-                <b>Generate</b>
-            </button>
-        </div>
+            <Button className="me-2" size="medium" variant="outlined" color="error" onClick={() => onResetHandler(true)}><b>Reset</b></Button>
+            <Button size="medium" variant="contained" disabled={isDisabled} color="success" onClick={() => onSubmitHandler()}><b>Generate</b></Button>
+        </div >
     )
 }

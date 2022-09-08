@@ -1,9 +1,10 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import QRCode from "qrcode.react";
 import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
 import { downloadQRCode } from "../utils/utilityMethods";
 import { SubmitResetButton } from "./ButtonComponent";
 import uuid from 'react-uuid';
+import moment from "moment"
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -21,7 +22,6 @@ const QRGenerate = () => {
     [QRGenerateConstants.FIELD_13_ID]: EMPTY,
     [QRGenerateConstants.FIELD_14_ID]: EMPTY
   })
-
   const [showQR, setShowQR] = useState(false);
 
   const createRow = (id, label, text, eventHandler) => {
@@ -116,7 +116,7 @@ const QRGenerate = () => {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" onClick={() => onResetHandler(true)}>
-              Additioal Fields
+              <b>Additioal Fields</b>
             </button>
           </h2>
           <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -169,7 +169,7 @@ const QRGenerate = () => {
               <b className="m-1">
                 <button
                   type="button"
-                  onClick={() => downloadQRCode(value.field_1, value.field_2, value.field_3, value.field_4)}
+                  onClick={() => downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))}
                   className={"btn btn-warning"}
                   disabled={diableButtonOnEmptyString()}
                 >
