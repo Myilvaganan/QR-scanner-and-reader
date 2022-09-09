@@ -6,8 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import $ from "jquery";
-import Popper from "popper.js";
+import "@awsui/global-styles/index.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

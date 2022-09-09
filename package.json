@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://Myilvaganan.github.io/QR-scanner-and-reader",
   "dependencies": {
+    "@awsui/components-react": "^3.0.591",
+    "@awsui/global-styles": "^1.0.19",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",

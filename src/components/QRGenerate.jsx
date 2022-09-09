@@ -5,6 +5,9 @@ import { downloadQRCode } from "../utils/utilityMethods";
 import { SubmitResetButton } from "./ButtonComponent";
 import uuid from 'react-uuid';
 import moment from "moment"
+import Input from "@awsui/components-react/input";
+import Button from "@awsui/components-react/button";
+import FormField from "@awsui/components-react/form-field";
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -29,15 +32,15 @@ const QRGenerate = () => {
       <div className="row">
         <div className="col">
           <div className="mb-2">
-            <label form={id} className="form-label">
-              <b>{label}</b>
-            </label>
-            <input
+            <FormField
+              label={<b>{label}</b>}
+            >
+            </FormField>
+            <Input
               type="text"
-              className="form-control"
               id={id}
               value={text}
-              onChange={(event) => eventHandler({ ...value, [id]: event.target.value })}
+              onChange={(event) => eventHandler({ ...value, [id]: event.detail.value })}
             />
           </div>
         </div>
@@ -116,7 +119,7 @@ const QRGenerate = () => {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" onClick={() => onResetHandler(true)}>
-              <b>Additioal Fields</b>
+              <h4><b>Additioal Fields</b></h4>
             </button>
           </h2>
           <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -167,14 +170,16 @@ const QRGenerate = () => {
           <div className="row mt-3">
             <div className="col">
               <b className="m-1">
-                <button
+                <Button
                   type="button"
+                  variant=""
+                  iconName="download"
                   onClick={() => downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))}
                   className={"btn btn-warning"}
                   disabled={diableButtonOnEmptyString()}
                 >
                   <b>Download QR Code</b>
-                </button>
+                </Button>
               </b>
             </div>
           </div>
