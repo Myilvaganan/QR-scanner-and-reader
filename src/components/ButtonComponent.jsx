@@ -26,7 +26,7 @@ export default ButtonComponent = () => {
                 variant={"primary"}
                 iconAlign="right"
                 className="btn btn-success"
-                iconName="angle-right-double    "
+                iconName="angle-right-double"
                 onClick={() => (window.location.href = HOME_PATH)}
             >
                 {NEXT_BTN_TEXT}

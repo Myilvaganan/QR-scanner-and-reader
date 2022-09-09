@@ -8,6 +8,7 @@ import moment from "moment"
 import Input from "@awsui/components-react/input";
 import Button from "@awsui/components-react/button";
 import FormField from "@awsui/components-react/form-field";
+import Modal from "@awsui/components-react/modal";
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -144,45 +145,53 @@ const QRGenerate = () => {
 
       {showQR && (
         <div className="col-12 my-3 justify-content-center align-items-center d-flex flex-column">
-          <QRCode
-            id={QR_Parameters.id}
-            value={JSON.stringify({
-              [QRGenerateConstants.UNIQUE_ID]: uuid(),
-              [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
-              [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
-              [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
-              [QRGenerateConstants.FIELD_4_ID]: value[QRGenerateConstants.FIELD_4_ID],
-              [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
-              [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
-              [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
-              [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
-              [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
-              [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
-              [QRGenerateConstants.FIELD_12_ID]: value[QRGenerateConstants.FIELD_12_ID],
-              [QRGenerateConstants.FIELD_13_ID]: value[QRGenerateConstants.FIELD_13_ID],
-              [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
+          <Modal
+            onDismiss={() => setShowQR(false)}
+            visible={showQR}
+          >
+            <div className="d-flex flex-column justify-content-center align-items-center">
+              <QRCode
+                id={QR_Parameters.id}
+                value={JSON.stringify({
+                  [QRGenerateConstants.UNIQUE_ID]: uuid(),
+                  [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
+                  [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
+                  [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
+                  [QRGenerateConstants.FIELD_4_ID]: value[QRGenerateConstants.FIELD_4_ID],
+                  [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
+                  [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
+                  [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
+                  [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
+                  [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
+                  [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
+                  [QRGenerateConstants.FIELD_12_ID]: value[QRGenerateConstants.FIELD_12_ID],
+                  [QRGenerateConstants.FIELD_13_ID]: value[QRGenerateConstants.FIELD_13_ID],
+                  [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
 
-            })}
-            size={QR_Parameters.size}
-            level={QR_Parameters.level}
-            includeMargin={QR_Parameters.includeMargin}
-          />
-          <div className="row mt-3">
-            <div className="col">
-              <b className="m-1">
-                <Button
-                  type="button"
-                  variant=""
-                  iconName="download"
-                  onClick={() => downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))}
-                  className={"btn btn-warning"}
-                  disabled={diableButtonOnEmptyString()}
-                >
-                  <b>Download QR Code</b>
-                </Button>
-              </b>
+                })}
+                size={QR_Parameters.size}
+                level={QR_Parameters.level}
+                includeMargin={QR_Parameters.includeMargin}
+              />
+              <div className="row mt-3">
+                <div className="col">
+                  <b className="m-1">
+                    <Button
+                      type="button"
+                      variant=""
+                      iconName="download"
+                      onClick={() => downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))}
+                      className={"btn btn-warning"}
+                      disabled={diableButtonOnEmptyString()}
+                    >
+                      <b>Download QR Code</b>
+                    </Button>
+                  </b>
+                </div>
+              </div>
             </div>
-          </div>
+           
+          </Modal>
         </div>
       )}
     </div>
