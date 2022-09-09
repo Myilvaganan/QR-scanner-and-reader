@@ -142,7 +142,7 @@ const QRGenerate = () => {
               onResetHandler(false)
             }}
             visible={showQR}
-            header={<p className="text-center fs-3">{`UNIQUE ID: ${uniqueID}`}</p>}
+            header={<p className="fs-3">QR ID: <b style={{ color: "#ec7211" }}>{uniqueID}</b></p>}
           >
             <div className="d-flex flex-column justify-content-center align-items-center">
               <QRCode
