@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/QR-scanner-and-reader/static/css/main.b6abff8c.css",
-    "main.js": "/QR-scanner-and-reader/static/js/main.93772bef.js",
+    "main.css": "/QR-scanner-and-reader/static/css/main.2255605d.css",
+    "main.js": "/QR-scanner-and-reader/static/js/main.993f6013.js",
     "static/js/787.0dd9e104.chunk.js": "/QR-scanner-and-reader/static/js/787.0dd9e104.chunk.js",
     "static/media/logo.svg": "/QR-scanner-and-reader/static/media/logo.55b501ccdccf50d419dfcbb3f6deef07.svg",
     "index.html": "/QR-scanner-and-reader/index.html",
-    "main.b6abff8c.css.map": "/QR-scanner-and-reader/static/css/main.b6abff8c.css.map",
-    "main.93772bef.js.map": "/QR-scanner-and-reader/static/js/main.93772bef.js.map",
+    "main.2255605d.css.map": "/QR-scanner-and-reader/static/css/main.2255605d.css.map",
+    "main.993f6013.js.map": "/QR-scanner-and-reader/static/js/main.993f6013.js.map",
     "787.0dd9e104.chunk.js.map": "/QR-scanner-and-reader/static/js/787.0dd9e104.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6abff8c.css",
-    "static/js/main.93772bef.js"
+    "static/css/main.2255605d.css",
+    "static/js/main.993f6013.js"
   ]
 }
