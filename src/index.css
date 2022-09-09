@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Poppins", sans-serif;
-  background-color: rgba(119, 232, 49, 0.12) !important;
+  background-color: #f2f3f3!important;
 }
 
 .footer {
