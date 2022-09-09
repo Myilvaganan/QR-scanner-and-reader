@@ -27,6 +27,7 @@ const QRGenerate = () => {
     [QRGenerateConstants.FIELD_14_ID]: EMPTY
   })
   const [showQR, setShowQR] = useState(false);
+  const [uniqueID, setUniqueID] = useState("")
 
   const createRow = (id, label, text, eventHandler) => {
     return (
@@ -59,6 +60,7 @@ const QRGenerate = () => {
       value[QRGenerateConstants.FIELD_5_ID]
     ) {
       setShowQR(true)
+      setUniqueID(uuid())
     } else {
       setShowQR(false)
     }
@@ -136,7 +138,6 @@ const QRGenerate = () => {
         </div>
       </div>
 
-
       <SubmitResetButton
         onSubmitHandler={() => onSubmitHandler()}
         onResetHandler={() => onResetHandler(false)}
@@ -148,12 +149,13 @@ const QRGenerate = () => {
           <Modal
             onDismiss={() => setShowQR(false)}
             visible={showQR}
+            header={<p className="text-center fs-3">{`UNIQUE ID: ${uniqueID}`}</p>}
           >
             <div className="d-flex flex-column justify-content-center align-items-center">
               <QRCode
                 id={QR_Parameters.id}
                 value={JSON.stringify({
-                  [QRGenerateConstants.UNIQUE_ID]: uuid(),
+                  [QRGenerateConstants.UNIQUE_ID]: uniqueID,
                   [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
                   [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
                   [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
@@ -190,7 +192,7 @@ const QRGenerate = () => {
                 </div>
               </div>
             </div>
-           
+
           </Modal>
         </div>
       )}
