@@ -9,6 +9,7 @@ import Input from "@awsui/components-react/input";
 import Button from "@awsui/components-react/button";
 import FormField from "@awsui/components-react/form-field";
 import Modal from "@awsui/components-react/modal";
+import ExpandableSection from "@awsui/components-react/expandable-section"
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -118,25 +119,14 @@ const QRGenerate = () => {
       {createRow(QRGenerateConstants.FIELD_6_ID, QRGenerateConstants.FIELD_6_LABEL, value[QRGenerateConstants.FIELD_6_ID], setValue)}
       {createRow(QRGenerateConstants.FIELD_7_ID, QRGenerateConstants.FIELD_7_LABEL, value[QRGenerateConstants.FIELD_7_ID], setValue)}
 
-      <div className="accordion accordion-flush my-2" id="accordionFlushExample">
-        <div className="accordion-item">
-          <h2 className="accordion-header" id="flush-headingOne">
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" onClick={() => onResetHandler(true)}>
-              <h4><b>Additioal Fields</b></h4>
-            </button>
-          </h2>
-          <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body">
-              {createRow(QRGenerateConstants.FIELD_9_ID, QRGenerateConstants.FIELD_9_LABEL, value[QRGenerateConstants.FIELD_9_ID], setValue)}
-              {createRow(QRGenerateConstants.FIELD_10_ID, QRGenerateConstants.FIELD_10_LABEL, value[QRGenerateConstants.FIELD_10_ID], setValue)}
-              {createRow(QRGenerateConstants.FIELD_11_ID, QRGenerateConstants.FIELD_11_LABEL, value[QRGenerateConstants.FIELD_11_ID], setValue)}
-              {createRow(QRGenerateConstants.FIELD_12_ID, QRGenerateConstants.FIELD_12_LABEL, value[QRGenerateConstants.FIELD_12_ID], setValue)}
-              {createRow(QRGenerateConstants.FIELD_13_ID, QRGenerateConstants.FIELD_13_LABEL, value[QRGenerateConstants.FIELD_13_ID], setValue)}
-              {createRow(QRGenerateConstants.FIELD_14_ID, QRGenerateConstants.FIELD_14_LABEL, value[QRGenerateConstants.FIELD_14_ID], setValue)}
-            </div>
-          </div>
-        </div>
-      </div>
+      <ExpandableSection header="Additional Fields" onChange={() => onResetHandler(true)}>
+        {createRow(QRGenerateConstants.FIELD_9_ID, QRGenerateConstants.FIELD_9_LABEL, value[QRGenerateConstants.FIELD_9_ID], setValue)}
+        {createRow(QRGenerateConstants.FIELD_10_ID, QRGenerateConstants.FIELD_10_LABEL, value[QRGenerateConstants.FIELD_10_ID], setValue)}
+        {createRow(QRGenerateConstants.FIELD_11_ID, QRGenerateConstants.FIELD_11_LABEL, value[QRGenerateConstants.FIELD_11_ID], setValue)}
+        {createRow(QRGenerateConstants.FIELD_12_ID, QRGenerateConstants.FIELD_12_LABEL, value[QRGenerateConstants.FIELD_12_ID], setValue)}
+        {createRow(QRGenerateConstants.FIELD_13_ID, QRGenerateConstants.FIELD_13_LABEL, value[QRGenerateConstants.FIELD_13_ID], setValue)}
+        {createRow(QRGenerateConstants.FIELD_14_ID, QRGenerateConstants.FIELD_14_LABEL, value[QRGenerateConstants.FIELD_14_ID], setValue)}
+      </ExpandableSection>
 
       <SubmitResetButton
         onSubmitHandler={() => onSubmitHandler()}
@@ -147,7 +137,10 @@ const QRGenerate = () => {
       {showQR && (
         <div className="col-12 my-3 justify-content-center align-items-center d-flex flex-column">
           <Modal
-            onDismiss={() => setShowQR(false)}
+            onDismiss={() => {
+              setShowQR(false)
+              onResetHandler(false)
+            }}
             visible={showQR}
             header={<p className="text-center fs-3">{`UNIQUE ID: ${uniqueID}`}</p>}
           >
