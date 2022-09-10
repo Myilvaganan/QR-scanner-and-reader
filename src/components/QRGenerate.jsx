@@ -11,7 +11,7 @@ import FormField from "@awsui/components-react/form-field";
 import Modal from "@awsui/components-react/modal";
 import ExpandableSection from "@awsui/components-react/expandable-section"
 import ButtonDropdown from "@awsui/components-react/button-dropdown"
-import Icon from "@awsui/components-react/icon"
+import Box from "@awsui/components-react/box"
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -154,32 +154,8 @@ const QRGenerate = () => {
             }}
             visible={showQR}
             header={<p className="fs-3">QR ID: <b style={{ color: "#ec7211" }}>{uniqueID}</b></p>}
-          >
-            <div className="d-flex flex-column justify-content-center align-items-center" id="innerQR">
-              <QRCode
-                id={QR_Parameters.id}
-                value={JSON.stringify({
-                  [QRGenerateConstants.UNIQUE_ID]: uniqueID,
-                  [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
-                  [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
-                  [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
-                  [QRGenerateConstants.FIELD_4_ID]: value[QRGenerateConstants.FIELD_4_ID],
-                  [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
-                  [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
-                  [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
-                  [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
-                  [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
-                  [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
-                  [QRGenerateConstants.FIELD_12_ID]: value[QRGenerateConstants.FIELD_12_ID],
-                  [QRGenerateConstants.FIELD_13_ID]: value[QRGenerateConstants.FIELD_13_ID],
-                  [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
-
-                })}
-                size={qrSize || QR_Parameters.size}
-                level={QR_Parameters.level}
-                includeMargin={QR_Parameters.includeMargin}
-              />
-              <div className="row mt-3 bg-light">
+            footer={<Box float="center">
+              <div className="row ">
                 <div className="d-flex flex-column justify-content-center align-items-center">
                   <ButtonDropdown
                     disabled={diableButtonOnEmptyString()}
@@ -206,10 +182,35 @@ const QRGenerate = () => {
                     className={"btn btn-warning my-3"}
                     onClick={onDownloadingQR}
                   >Download</Button>
-
                 </div>
-
               </div>
+            </Box>}
+          >
+            <div className="d-flex flex-column justify-content-center align-items-center" id="innerQR">
+              <QRCode
+                id={QR_Parameters.id}
+                value={JSON.stringify({
+                  [QRGenerateConstants.UNIQUE_ID]: uniqueID,
+                  [QRGenerateConstants.FIELD_1_ID]: value[QRGenerateConstants.FIELD_1_ID],
+                  [QRGenerateConstants.FIELD_2_ID]: value[QRGenerateConstants.FIELD_2_ID],
+                  [QRGenerateConstants.FIELD_3_ID]: value[QRGenerateConstants.FIELD_3_ID],
+                  [QRGenerateConstants.FIELD_4_ID]: value[QRGenerateConstants.FIELD_4_ID],
+                  [QRGenerateConstants.FIELD_5_ID]: value[QRGenerateConstants.FIELD_5_ID],
+                  [QRGenerateConstants.FIELD_6_ID]: value[QRGenerateConstants.FIELD_6_ID],
+                  [QRGenerateConstants.FIELD_7_ID]: value[QRGenerateConstants.FIELD_7_ID],
+                  [QRGenerateConstants.FIELD_9_ID]: value[QRGenerateConstants.FIELD_9_ID],
+                  [QRGenerateConstants.FIELD_10_ID]: value[QRGenerateConstants.FIELD_10_ID],
+                  [QRGenerateConstants.FIELD_11_ID]: value[QRGenerateConstants.FIELD_11_ID],
+                  [QRGenerateConstants.FIELD_12_ID]: value[QRGenerateConstants.FIELD_12_ID],
+                  [QRGenerateConstants.FIELD_13_ID]: value[QRGenerateConstants.FIELD_13_ID],
+                  [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
+
+                })}
+                size={qrSize || QR_Parameters.size}
+                level={QR_Parameters.level}
+                includeMargin={QR_Parameters.includeMargin}
+              />
+
             </div>
 
           </Modal>
