@@ -33,4 +33,5 @@ body {
 
 #innerQR {
   overflow: auto;
+  max-height: 50vh;
 }
