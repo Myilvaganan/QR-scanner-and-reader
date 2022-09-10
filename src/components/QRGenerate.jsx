@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QRCode from "qrcode.react";
-import { EMPTY, QR_Parameters, QRGenerateConstants } from "../constants/scanApp";
+import { EMPTY, QR_Parameters, QRGenerateConstants, QR_Size_items } from "../constants/scanApp";
 import { downloadQRCode } from "../utils/utilityMethods";
 import { SubmitResetButton } from "./ButtonComponent";
 import uuid from 'react-uuid';
@@ -12,6 +12,7 @@ import Modal from "@awsui/components-react/modal";
 import ExpandableSection from "@awsui/components-react/expandable-section"
 import ButtonDropdown from "@awsui/components-react/button-dropdown"
 import Box from "@awsui/components-react/box"
+import CopyAndPaste from "./CopyAndPaste";
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -150,26 +151,16 @@ const QRGenerate = () => {
           <Modal
             onDismiss={() => {
               setShowQR(false)
-              onResetHandler(false)
+              onResetHandler(false) 
             }}
             visible={showQR}
-            header={<p className="fs-3">QR ID: <b style={{ color: "#ec7211" }}>{uniqueID}</b></p>}
+            header={<CopyAndPaste innerContent={uniqueID} />}
             footer={<Box float="center">
               <div className="row ">
                 <div className="d-flex flex-column justify-content-center align-items-center">
                   <ButtonDropdown
                     disabled={diableButtonOnEmptyString()}
-                    items={[
-                      { text: "200 * 200", id: 200 },
-                      { text: "300 * 300", id: 300 },
-                      { text: "400 * 400", id: 400 },
-                      { text: "500 * 500", id: 500 },
-                      { text: "600 * 600", id: 600 },
-                      { text: "700 * 700", id: 700 },
-                      { text: "800 * 800", id: 800 },
-                      { text: "900 * 900", id: 900 },
-                      { text: "1000 * 1000", id: 1000 }
-                    ]}
+                    items={QR_Size_items}
                     variant="primary"
                     onItemClick={(event) => OnButtonChange(event.detail)}
                   >

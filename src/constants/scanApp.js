@@ -52,6 +52,18 @@ const QR_Parameters = {
 
 const QR_SCANNER_WIDTH = "300px";
 
+const QR_Size_items = [
+	{ text: "200 * 200", id: 200 },
+	{ text: "300 * 300", id: 300 },
+	{ text: "400 * 400", id: 400 },
+	{ text: "500 * 500", id: 500 },
+	{ text: "600 * 600", id: 600 },
+	{ text: "700 * 700", id: 700 },
+	{ text: "800 * 800", id: 800 },
+	{ text: "900 * 900", id: 900 },
+	{ text: "1000 * 1000", id: 1000 }
+]
+
 export {
 	GENERATE,
 	SCANNER,
@@ -66,5 +78,6 @@ export {
 	NEXT_BTN_TEXT,
 	QRGenerateConstants,
 	QR_Parameters,
-	QR_SCANNER_WIDTH
+	QR_SCANNER_WIDTH,
+	QR_Size_items
 }
