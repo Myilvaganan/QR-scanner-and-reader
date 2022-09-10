@@ -186,7 +186,10 @@ const QRGenerate = () => {
                     items={[
                       { text: "200 * 200", id: 200 },
                       { text: "300 * 300", id: 300 },
-                      { text: "400 * 400", id: 400 }
+                      { text: "400 * 400", id: 400 },
+                      { text: "500 * 500", id: 500 },
+                      { text: "600 * 600", id: 600 },
+                      { text: "700 * 700", id: 700 }
                     ]}
                     variant="primary"
                     onItemClick={(event) => OnButtonChange(event.detail)}
