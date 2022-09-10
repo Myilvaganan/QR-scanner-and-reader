@@ -10,6 +10,8 @@ import Button from "@awsui/components-react/button";
 import FormField from "@awsui/components-react/form-field";
 import Modal from "@awsui/components-react/modal";
 import ExpandableSection from "@awsui/components-react/expandable-section"
+import ButtonDropdown from "@awsui/components-react/button-dropdown"
+import Icon from "@awsui/components-react/icon"
 
 const QRGenerate = () => {
   const [value, setValue] = useState({
@@ -28,7 +30,8 @@ const QRGenerate = () => {
     [QRGenerateConstants.FIELD_14_ID]: EMPTY
   })
   const [showQR, setShowQR] = useState(false);
-  const [uniqueID, setUniqueID] = useState("")
+  const [uniqueID, setUniqueID] = useState("");
+  const [qrSize, setQRSize] = useState(QR_Parameters.size)
 
   const createRow = (id, label, text, eventHandler) => {
     return (
@@ -109,6 +112,14 @@ const QRGenerate = () => {
       !value[QRGenerateConstants.FIELD_5_ID]
   }
 
+  const OnButtonChange = (selectedSize) => {
+    setQRSize(selectedSize.id)
+  }
+
+  const onDownloadingQR = () => [
+    downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))
+  ]
+
   return (
     <div className="main-container mt-3">
       {createRow(QRGenerateConstants.FIELD_1_ID, QRGenerateConstants.FIELD_1_LABEL, value[QRGenerateConstants.FIELD_1_ID], setValue)}
@@ -144,7 +155,7 @@ const QRGenerate = () => {
             visible={showQR}
             header={<p className="fs-3">QR ID: <b style={{ color: "#ec7211" }}>{uniqueID}</b></p>}
           >
-            <div className="d-flex flex-column justify-content-center align-items-center">
+            <div className="d-flex flex-column justify-content-center align-items-center" id="innerQR">
               <QRCode
                 id={QR_Parameters.id}
                 value={JSON.stringify({
@@ -164,25 +175,34 @@ const QRGenerate = () => {
                   [QRGenerateConstants.FIELD_14_ID]: value[QRGenerateConstants.FIELD_14_ID]
 
                 })}
-                size={QR_Parameters.size}
+                size={qrSize || QR_Parameters.size}
                 level={QR_Parameters.level}
                 includeMargin={QR_Parameters.includeMargin}
               />
-              <div className="row mt-3">
-                <div className="col">
-                  <b className="m-1">
-                    <Button
-                      type="button"
-                      variant=""
-                      iconName="download"
-                      onClick={() => downloadQRCode(value[QRGenerateConstants.FIELD_1_ID], value[QRGenerateConstants.FIELD_2_ID], value[QRGenerateConstants.FIELD_3_ID], moment(Date.now()).format("MM/DD/YYYY"))}
-                      className={"btn btn-warning"}
-                      disabled={diableButtonOnEmptyString()}
-                    >
-                      <b>Download QR Code</b>
-                    </Button>
-                  </b>
+              <div className="row mt-3 bg-light">
+                <div className="d-flex flex-column justify-content-center align-items-center">
+                  <ButtonDropdown
+                    disabled={diableButtonOnEmptyString()}
+                    items={[
+                      { text: "200 * 200", id: 200 },
+                      { text: "300 * 300", id: 300 },
+                      { text: "400 * 400", id: 400 }
+                    ]}
+                    variant="primary"
+                    onItemClick={(event) => OnButtonChange(event.detail)}
+                  >
+                    <b>Select QR Size</b>
+                  </ButtonDropdown>
+                  <Button
+                    type="button"
+                    variant=""
+                    iconName="download"
+                    className={"btn btn-warning my-3"}
+                    onClick={onDownloadingQR}
+                  >Download</Button>
+
                 </div>
+
               </div>
             </div>
 

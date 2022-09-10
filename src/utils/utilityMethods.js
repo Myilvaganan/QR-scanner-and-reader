@@ -1,6 +1,6 @@
 export const downloadQRCode = (container, vessel, tube, location) => {
 	const canvas = document.getElementById("qr-gen");
-	const pngUrl = canvas
+	const pngUrl = canvas && canvas
 		.toDataURL("image/png")
 		.replace("image/png", "image/octet-stream");
 

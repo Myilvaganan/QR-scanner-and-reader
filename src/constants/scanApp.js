@@ -45,7 +45,7 @@ const QRGenerateConstants = {
 
 const QR_Parameters = {
 	id: "qr-gen",
-	size: 290,
+	size: 200,
 	level: "L",
 	includeMargin: true
 }

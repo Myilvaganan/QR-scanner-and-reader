@@ -30,3 +30,7 @@ body {
 .logo-img {
   cursor: pointer;
 }
+
+#innerQR{
+  overflow: scroll;
+}
