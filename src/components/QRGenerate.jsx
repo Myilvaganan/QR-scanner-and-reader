@@ -151,7 +151,7 @@ const QRGenerate = () => {
           <Modal
             onDismiss={() => {
               setShowQR(false)
-              onResetHandler(false) 
+              onResetHandler(false)
             }}
             visible={showQR}
             header={<CopyAndPaste innerContent={uniqueID} />}
@@ -164,7 +164,7 @@ const QRGenerate = () => {
                     variant="primary"
                     onItemClick={(event) => OnButtonChange(event.detail)}
                   >
-                    <b>Select QR Size</b>
+                    <b>Select Pixel</b>
                   </ButtonDropdown>
                   <Button
                     type="button"
