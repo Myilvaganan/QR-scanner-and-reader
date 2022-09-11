@@ -25,27 +25,27 @@ const QRScanner = (props) => {
 
   return (
     <Fragment>
-    <div className="row">
-      <div className="col-12 d-flex justify-content-center mt-4">
-        {showCamera && (
-          <QrReader
-            onResult={(result) => {
-              if (!!result) {
-                setData(JSON.parse(result?.text));
-                setShowCamera(false);
-              }
-            }}
-            containerStyle={{ width: QR_SCANNER_WIDTH }}
-            constraints={{ facingMode: CAMERA_CONSTRAINT_ENVIRONMENT }}
-          />
-        )}
+      <div className="row">
+        <div className="col-12 d-flex justify-content-center mt-4">
+          {showCamera && (
+            <QrReader
+              onResult={(result) => {
+                if (!!result) {
+                  setData(JSON.parse(result?.text));
+                  setShowCamera(false);
+                }
+              }}
+              containerStyle={{ width: QR_SCANNER_WIDTH }}
+              constraints={{ facingMode: CAMERA_CONSTRAINT_ENVIRONMENT }}
+            />
+          )}
+        </div>
       </div>
-    </div>
-     {
-    !showCamera && (
-      <ResultTable scannedData={data} />
+      {
+        !showCamera && (
+          <ResultTable scannedData={data} />
         )
-        
+
       }
     </Fragment>
   );

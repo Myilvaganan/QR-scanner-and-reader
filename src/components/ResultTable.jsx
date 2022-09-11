@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, {useState, Fragment } from "react";
 import { PLACE_HOLDER_TEXT, QRGenerateConstants } from "../constants/scanApp";
 import Table from "@awsui/components-react/table";
 import Box from "@awsui/components-react/box";
@@ -8,9 +8,7 @@ import ButtonComponent from "./ButtonComponent";
 import Textarea from "@awsui/components-react/textarea"
 
 const ResultTable = ({ scannedData }) => {
-    const [items, setItems] = useState([]);
     const [textContent, setTextContent] = useState("")
-
     const generateRows = (values) => {
         return Object.keys(values).map((key, i) => {
             return values[key] && {
@@ -22,17 +20,6 @@ const ResultTable = ({ scannedData }) => {
         }
         )
     }
-
-    useEffect(() => {
-        let isMount = true;
-        if (isMount && scannedData) {
-            setItems(generateRows(scannedData))
-        }
-        return () => {
-            isMount = false
-        };
-    }, [scannedData])
-
     return (
         <div className="table-container">
             <Table
@@ -54,7 +41,7 @@ const ResultTable = ({ scannedData }) => {
                     }
                 ]}
                 id="table"
-                items={items}
+                items={scannedData ? generateRows(scannedData) : []}
                 loadingText="Loading resources"
                 trackBy="name"
                 variant="container"
