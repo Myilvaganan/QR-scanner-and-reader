@@ -14,7 +14,7 @@ let ButtonComponent;
 // eslint-disable-next-line no-unused-vars
 export default ButtonComponent = () => {
     return (
-        <div className="d-flex justify-content-end align-items-end my-3 w-100">
+        <div className="d-flex justify-content-end align-items-end my-4 w-100">
             <Button
                 className="btn btn-warning mx-2"
                 iconName="angle-left"

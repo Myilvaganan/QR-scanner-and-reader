@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { QrReader } from "react-qr-reader";
-import ButtonComponent from "./ButtonComponent";
 import { CAMERA_CONSTRAINT_ENVIRONMENT, EMPTY, QR_SCANNER_WIDTH } from "../constants/scanApp";
-import ShipmentDetailsTable from "./ShipmentDetailsTable";
+import ResultTable from "./ResultTable";
 import { QRGenerateConstants } from "../constants/scanApp"
 
 const QRScanner = (props) => {
@@ -25,6 +24,7 @@ const QRScanner = (props) => {
   const [showCamera, setShowCamera] = useState(true);
 
   return (
+    <Fragment>
     <div className="row">
       <div className="col-12 d-flex justify-content-center mt-4">
         {showCamera && (
@@ -40,18 +40,14 @@ const QRScanner = (props) => {
           />
         )}
       </div>
-      {!showCamera && (
-        <div className="row bg-light bg-gradient my-3">
-          <h4 className="py-3 d-flex flex-column justify-content-center align-items-center text-success">
-            Shipment Details
-          </h4>
-          <div className="col-12 table-responsive">
-            <ShipmentDetailsTable scannedData={data}/>
-            <ButtonComponent />
-          </div>
-        </div>
-      )}
     </div>
+     {
+    !showCamera && (
+      <ResultTable scannedData={data} />
+        )
+        
+      }
+    </Fragment>
   );
 };
 
