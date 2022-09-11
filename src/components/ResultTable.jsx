@@ -1,4 +1,4 @@
-import React, {useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { PLACE_HOLDER_TEXT, QRGenerateConstants } from "../constants/scanApp";
 import Table from "@awsui/components-react/table";
 import Box from "@awsui/components-react/box";
@@ -8,18 +8,22 @@ import ButtonComponent from "./ButtonComponent";
 import Textarea from "@awsui/components-react/textarea"
 
 const ResultTable = ({ scannedData }) => {
-    const [textContent, setTextContent] = useState("")
+    const [textContent, setTextContent] = useState("");
+
     const generateRows = (values) => {
-        return Object.keys(values).map((key, i) => {
-            return values[key] && {
+        const result = []
+        Object.keys(values).filter(truthyVal => truthyVal).map((key, i) => {
+            return values[key] && result.push({
                 key: i,
                 id: i + 1,
                 particulars: QRGenerateConstants[key.replace("ID", "LABEL")],
                 details: values[key]
-            }
+            })
         }
         )
+        return result ? result.filter(value => value) : []
     }
+
     return (
         <div className="table-container">
             <Table
@@ -62,7 +66,7 @@ const ResultTable = ({ scannedData }) => {
                     </Box>
                 }
                 header={
-                    <Header>
+                    <Header className="d-flex justify-content-center">
                         Shipment Details
                     </Header>
                 }
@@ -73,6 +77,7 @@ const ResultTable = ({ scannedData }) => {
                             onChange={(event) => setTextContent(event.detail.value)}
                             placeholder={PLACE_HOLDER_TEXT}
                             id="floatingTextarea"
+                            rows={1}
                         ></Textarea>
                         <ButtonComponent />
                     </Fragment>}
