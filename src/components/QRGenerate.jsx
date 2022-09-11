@@ -164,7 +164,7 @@ const QRGenerate = () => {
                     variant="primary"
                     onItemClick={(event) => OnButtonChange(event.detail)}
                   >
-                    <b>Select Pixel</b>
+                    <b>Select Pixel {qrSize}&nbsp;*&nbsp;{qrSize}</b>
                   </ButtonDropdown>
                   <Button
                     type="button"
